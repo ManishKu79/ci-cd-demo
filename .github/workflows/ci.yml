@@ -1,16 +1,16 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Python
       uses: actions/setup-python@v4
@@ -22,3 +22,6 @@ jobs:
 
     - name: Run Tests
       run: pytest
+
+    - name: Deploy Step
+      run: echo "Deploying application..."
